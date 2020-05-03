@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IP</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Fecha Actual:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputCurrentDate" th:value="${info.currentDate}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Hora Actual:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputCurrentTime" th:value="${info.currentTime}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">País:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputCountryName" th:value="${info.name}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Código ISO:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputISOCode" th:value="${info.isoCode}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Idioma(s):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputLanguages" th:value="${info.languages}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Moneda(s):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputCurrencies" th:value="${info.currencies}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Hora(s):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputTimes" th:value="${info.times}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Distancia estimada (Km):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="estimatedDistance" th:value="${info.estimatedDistance}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Distancia más cercana a BsAs (Km):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="minimalDistance" th:value="${info.minimalDistance}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Distancia más lejana a BsAs (Km):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="maximumDistance" th:value="${info.maximumDistance}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Distancia estimada promedio (Km):</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="averageDistance" th:value="${info.averageDistance}" readonly>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<input type="button" class="btn btn-primary mb-2" value="Volver a buscar" onclick="history.back(-1)" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>
