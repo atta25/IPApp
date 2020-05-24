@@ -32,25 +32,7 @@ public class Repository {
         repositoryInterface.save(register);
     }
 
-    public Integer getMinimalDistance() {
-        List<Register> registers = this.getRegisters();
-        return registers.stream().mapToInt(Register::getDistance).min().orElse(0);
-    }
-
-    public Integer getMaximumDistance() {
-        List<Register> registers = this.getRegisters();
-        return registers.stream().mapToInt(Register::getDistance).max().orElse(0);
-    }
-
-    public Integer getAverageDistance() {
-        List<Register> registers = this.getRegisters();
-        Integer totalSum = registers.stream().mapToInt(register -> register.getDistance() * register.getInvocations()).sum();
-        Integer canTotalOfInvocations = registers.stream().mapToInt(Register::getInvocations).sum();
-
-        return totalSum / canTotalOfInvocations;
-    }
-
-    private List<Register> getRegisters() {
+    public List<Register> getRegisters() {
         Iterator<Register> iterator = repositoryInterface.findAll().iterator();
         return IteratorUtils.toList(iterator);
     }
