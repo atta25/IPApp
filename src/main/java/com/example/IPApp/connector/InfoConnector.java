@@ -7,11 +7,11 @@ import com.example.IPApp.error.Error;
 import com.example.IPApp.exception.InfoException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
-import java.util.List;
 
 @Component
-public class InfoConnector extends AbstractInfoConnector {
+public class InfoConnector {
     public CountryInfoDTO getCountryInfoId(String ip) {
         final String uri = String.format("https://api.ip2country.info/ip?%s", ip);
         return makeRequest(uri, CountryInfoDTO.class);
@@ -26,9 +26,7 @@ public class InfoConnector extends AbstractInfoConnector {
             throw new InfoException(Error.INCONSISTENT_DATA.getMessage());
         }
 
-        List<InfoDTO> list = Arrays.asList(result);
-
-        return CollectionUtils.firstElement(list);
+        return CollectionUtils.firstElement(Arrays.asList(result));
     }
 
     public ConversionDTO getConversion(String base) {
@@ -36,5 +34,17 @@ public class InfoConnector extends AbstractInfoConnector {
         final String uri = String.format("http://data.fixer.io/api/latest?access_key=%s&base=%s", API_KEY_FIXER_IO, base);
 
          return makeRequest(uri, ConversionDTO.class);
+    }
+
+    private <T> T makeRequest(String uri, Class<T> clazz) {
+        RestTemplate restTemplate = new RestTemplate();
+        T result;
+        try {
+            result = restTemplate.getForObject(uri, clazz);
+        } catch (Exception e) {
+            throw new InfoException(Error.SERVICE_ERROR.getMessage());
+        }
+
+        return result;
     }
 }
