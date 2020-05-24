@@ -33,7 +33,7 @@ public class CountryInfoService {
     private InfoResponse buildInfo(String ip) {
         CountryInfoDTO countryInfoDTO = this.infoConnector.getCountryInfoId(ip);
         String countryName = countryInfoDTO.getCountryName();
-        InfoDTO infoDTO = this.infoConnector.getCountryInfo(countryName);
+        InfoDTO infoDTO = this.infoConnector.getInfo(countryName);
         return this.ipTransformer.transform(infoDTO);
     }
 

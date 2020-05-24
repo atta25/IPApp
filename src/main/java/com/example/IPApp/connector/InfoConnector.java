@@ -17,7 +17,7 @@ public class InfoConnector {
         return makeRequest(uri, CountryInfoDTO.class);
     }
 
-    public InfoDTO getCountryInfo(String countryName) {
+    public InfoDTO getInfo(String countryName) {
         final String uri = String.format("https://restcountries.eu/rest/v2/name/%s?fullText=true", countryName);
 
         InfoDTO[] result = makeRequest(uri, InfoDTO[].class);
